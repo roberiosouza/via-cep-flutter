@@ -16,9 +16,6 @@ class _HomeState extends State<Home> {
     http.Response respose;
     respose = await http.get(url);
     Map<String, dynamic> dados = json.decode(respose.body);
-
-    print("Resposta: Logradouro: ${dados["logradouro"]} Bairro: "
-        "${dados["bairro"]} UF: ${dados["uf"]}");
   }
 
   @override
