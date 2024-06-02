@@ -25,9 +25,10 @@ class _HomeState extends State<Home> {
     Map<String, dynamic> dados = json.decode(respose.body);
 
     setState(() {
-      _logradouro = dados["logradouro"];
-      _bairro = dados["bairro"];
-      _uf = dados["uf"];
+      _logradouro =
+          dados.containsKey("erro") == false ? dados["logradouro"] : "";
+      _bairro = dados.containsKey("erro") == false ? dados["bairro"] : "";
+      _uf = dados.containsKey("erro") == false ? dados["uf"] : "";
     });
   }
 
@@ -44,6 +45,7 @@ class _HomeState extends State<Home> {
             child: TextField(
               keyboardType: TextInputType.number,
               decoration: InputDecoration(hintText: "Digite aqui um CEP"),
+              maxLength: 8,
               controller: _cepController,
             ),
           ),
